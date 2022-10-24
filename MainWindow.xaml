@@ -1,0 +1,97 @@
+﻿<Window x:Class="Pixel_Art.MainWindow"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
+        xmlns:local="clr-namespace:Pixel_Art"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Title="Pixel Art" Height="768" Width="1360" MinHeight="768" MinWidth="1360" WindowState="Maximized" Icon="./Assets/PX.png">
+    <Window.Resources>
+        
+        
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="20"></Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="FontSize" Value="28"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            
+        </Style>
+        
+        
+        
+    </Window.Resources>
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" Width="200" >
+            
+            <TextBlock>Nuevo Grid</TextBlock>
+            <Button x:Name="TamPequenoButton" Click="SelectorGridClick" Style="{StaticResource MaterialDesignRaisedLightButton}" >Pequeño</Button>
+            <Button x:Name="TamMedianoButton" Click="SelectorGridClick" Style="{StaticResource MaterialDesignRaisedLightButton}">Mediano</Button>
+            <Button x:Name="TamGrandeButton" Click="SelectorGridClick" Style="{StaticResource MaterialDesignRaisedLightButton}">Grande</Button>
+            <StackPanel Width="150">
+                <TextBlock>Tools</TextBlock>
+                <Button Click="RellenarButtonClicked" Style="{StaticResource MaterialDesignRaisedLightButton}" >Rellenar</Button>
+                <Button x:Name="ExportToPNG" Click="ExportToPNGClick" Style="{StaticResource MaterialDesignRaisedLightButton}">Exportar a PNG</Button>
+                <Button x:Name="ExportToTIFF" Click="ExportToPNGClick" Style="{StaticResource MaterialDesignRaisedLightButton}">Exportar a TIFF</Button>
+
+            </StackPanel>
+
+        </StackPanel>
+
+
+
+
+        <StackPanel Grid.Column="2" Width="200">
+            
+                <TextBlock>Colores</TextBlock>
+                <RadioButton x:Name="ColorNegro" GroupName="Colores" IsChecked="True" Checked="ColorButtonChecked" >Negro</RadioButton>
+                <RadioButton x:Name="ColorBlanco"  GroupName="Colores" Checked="ColorButtonChecked">Blanco</RadioButton>
+                <RadioButton x:Name="ColoRojo"  GroupName="Colores" Checked="ColorButtonChecked">Rojo</RadioButton>
+                <RadioButton x:Name="ColoVerde" GroupName="Colores" Checked="ColorButtonChecked">Verde</RadioButton>
+                <RadioButton x:Name="ColoAzul" GroupName="Colores" Checked="ColorButtonChecked">Azul</RadioButton>
+                <RadioButton x:Name="ColoAmarillo" GroupName="Colores" Checked="ColorButtonChecked">Amarillo</RadioButton>
+                <RadioButton x:Name="ColoNaranja" GroupName="Colores" Checked="ColorButtonChecked">Naranja</RadioButton>
+                <RadioButton x:Name="ColoRosa" GroupName="Colores" Checked="ColorButtonChecked">Rosa</RadioButton>
+                <RadioButton x:Name="ColorCustom" GroupName="Colores" Checked="ColorButtonChecked">Personalizado</RadioButton>
+                <TextBox x:Name="ColorCustomTexto" TextChanged="ColorCustomTextoChanged"/>
+            <colorpicker:StandardColorPicker x:Name="ColorPicker" Width="200" Height="380" ColorChanged="ColorPickerColorChanged"  />
+            
+            
+            
+        </StackPanel>
+
+       
+        
+        <StackPanel  Grid.Column="1" >
+
+            
+            <Grid x:Name="GridDibujo" Panel.ZIndex="3" Width="800" Height="600" MouseMove="GridDibujoMouseMove" MouseLeftButtonDown="GridDibujoMouseClick" MouseRightButtonDown="GridDibujoMouseClickDerecho"  />
+            <TextBlock FontSize="32">PXIFY</TextBlock>
+            <Image Source="./Assets/github.png" MouseLeftButtonDown="OpenURL" ></Image>
+        </StackPanel>
+        
+
+
+
+    </Grid>
+</Window>
